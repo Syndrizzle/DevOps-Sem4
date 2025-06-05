@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowStartStopDescribeInUSWest2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestedRegion": "us-west-1"
+                }
+            }
+        },
+        {
+            "Sid": "DenyTerminateInstances",
+            "Effect": "Deny",
+            "Action": "ec2:TerminateInstances",
+            "Resource": "*"
+        }
+    ]
+}
